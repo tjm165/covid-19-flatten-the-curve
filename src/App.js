@@ -1,11 +1,11 @@
 import React from "react";
-import { MyChart } from "./components/graph";
+import Dashboard from "./components/dashboard";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <MyChart />
+      <Dashboard />
     </div>
   );
 }
