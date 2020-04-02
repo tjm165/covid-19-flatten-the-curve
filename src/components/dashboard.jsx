@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { getHotlineBlingData } from "../API";
 import axios from "axios";
 import CovidChart from "./covidChart";
 
