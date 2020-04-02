@@ -1,7 +1,7 @@
 import React from "react";
 import { Chart } from "react-charts";
 
-function CovidChart() {
+function MyChart() {
   const exampleData = React.useMemo(
     () => [
       {
@@ -53,4 +53,4 @@ function CovidChart() {
   );
 }
 
-export default CovidChart;
+export default MyChart;

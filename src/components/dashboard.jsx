@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CovidChart from "./covidChart";
+import MyChart from "./myChart";
 
 function Dashboard() {
   const [cache, setCache] = useState(false);
