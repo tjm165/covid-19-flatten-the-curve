@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getHotlineBlingData } from "../API";
+import axios from "axios";
 import CovidChart from "./covidChart";
 
 function Dashboard() {
-  const x = 2;
+  const [cache, setCache] = useState(false);
+
+  async function fetchData() {
+    const response = await axios.get(
+      "https://covid-hotline-bling.herokuapp.com/dataallfips/raw"
+    );
+    setCache(response.data);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
-      <h1>{x}</h1>
-      <CovidChart country="china" />
+      <h1> {cache ? "y" : "n"}</h1> <CovidChart country="china" />
     </div>
   );
 }

@@ -1,28 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Chart } from "react-charts";
 
-function x(da) {
-  const deathCountEachDay = {};
-  da.forEach(element => {
-    if 
-  });
-  return da[0];
-}
-
 function CovidChart() {
-  const path = "https://api.covid19api.com/dayone/country/china/status/deaths";
-
-  const [d, setd] = useState(false);
-
-  async function fetchData() {
-    const res = await fetch(path);
-    res.json().then(res => setd(x(res)));
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const exampleData = React.useMemo(
     () => [
       {

@@ -1,17 +1,17 @@
-export async function GET(path) {
-  return fetch(path, {
-    method: "GET", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json"
-    },
-    redirect: "follow", // manual, *follow, error
-    referrer: "no-referrer" // no-referrer, *client
-  })
-    .then(response => response.json())
-    .then(json => {
-      return json;
-    }); // parses JSON response into native Javascript objects
+import axios from "axios";
+
+export function getHotlineBlingData() {
+  return getRawData("http://covid-hotline-bling.herokuapp.com/dataallfips/raw");
+}
+
+async function getRawData(url) {
+  const response = await axios.get(
+    "http://covid-hotline-bling.herokuapp.com/dataallfips",
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
+  );
+  return response;
 }
