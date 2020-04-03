@@ -9,16 +9,20 @@ function Dashboard() {
     const response = await axios.get(
       "https://covid-hotline-bling.herokuapp.com/dataallfips/raw"
     );
+    debugger;
     setCache(response.data);
   }
 
   useEffect(() => {
     fetchData();
   }, []);
+  const subdata = cache && cache.filter(entry => entry.state === "Ohio");
+  const x = subdata && subdata.map(entry => entry.date);
+  const y = subdata && subdata.map(entry => entry.deaths);
 
   return (
     <div className="App">
-      <h1> {cache ? "y" : "n"}</h1> <CovidChart country="china" />
+      <h1> {subdata ? "y" : "n"}</h1> <MyChart country="china" />
     </div>
   );
 }
