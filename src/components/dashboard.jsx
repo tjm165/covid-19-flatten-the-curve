@@ -4,25 +4,40 @@ import MyChart from "./myChart";
 
 function Dashboard() {
   const [cache, setCache] = useState(false);
+  const [x, setX] = useState(false);
 
   async function fetchData() {
     const response = await axios.get(
       "https://covid-hotline-bling.herokuapp.com/dataallfips/raw"
     );
-    debugger;
     setCache(response.data);
+    const subdata = response.data.filter(entry => entry.state === "Ohio");
+    var data = {};
+    subdata.forEach(entry => {
+      const date = new Date(entry.date);
+      if (data.hasOwnProperty(date)) {
+        data[date] = data[date] + entry.deaths;
+      } else {
+        data[date] = entry.deaths;
+      }
+    });
+    setX([
+      {
+        label: "Series 2",
+        data: Object.entries(data).map(entry => [new Date(entry[0]), entry[1]])
+      }
+    ]);
+
+    debugger;
   }
 
   useEffect(() => {
     fetchData();
   }, []);
-  const subdata = cache && cache.filter(entry => entry.state === "Ohio");
-  const x = subdata && subdata.map(entry => entry.date);
-  const y = subdata && subdata.map(entry => entry.deaths);
-
   return (
     <div className="App">
-      <h1> {subdata ? "y" : "n"}</h1> <MyChart country="china" />
+      <h1> {x ? "y" : "n"}</h1>
+      {x && <MyChart hi={"hi"} propData={x} country="china" />}
     </div>
   );
 }
