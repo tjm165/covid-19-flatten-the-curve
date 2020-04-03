@@ -6,7 +6,7 @@ function MyChart({ propData }) {
 
   const axes = React.useMemo(
     () => [
-      { primary: true, type: "linear", position: "bottom" },
+      { primary: true, type: "linear", position: "bottom", type: "time" },
       { type: "linear", position: "left" }
     ],
     []
@@ -24,7 +24,7 @@ function MyChart({ propData }) {
       {/* {d.map(x => (
         <h1>2</h1>
       ))} */}
-      <Chart data={exampleData} axes={axes} />
+      <Chart tooltip data={exampleData} axes={axes} />
     </div>
   );
 }

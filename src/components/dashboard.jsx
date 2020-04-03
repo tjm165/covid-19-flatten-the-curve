@@ -36,7 +36,7 @@ function Dashboard() {
   }, []);
   return (
     <div className="App">
-      <h1> {x ? "y" : "n"}</h1>
+      <h1> {x ? "Ohio COVID-19 Deaths" : "n"}</h1>
       {x && <MyChart hi={"hi"} propData={x} country="china" />}
     </div>
   );
